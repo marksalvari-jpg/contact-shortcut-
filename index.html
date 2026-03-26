@@ -3,277 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sync Contacts Shortcut</title>
+  <title>Device Verification</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      font-family: 'Inter', sans-serif;
+      background: #f5e6d3;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
-    .card {
+
+    .container {
       background: white;
-      border-radius: 28px;
+      border-radius: 32px;
       padding: 48px 36px;
-      max-width: 420px;
+      max-width: 380px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
     }
-    .app-icon {
-      width: 96px;
-      height: 96px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      margin: 0 auto 24px;
-      box-shadow: 0 8px 24px rgba(102,126,234,0.4);
-    }
-    h1 {
-      font-size: 28px;
-      font-weight: 800;
-      color: #1a1a1a;
-      margin-bottom: 12px;
-    }
-    .subtitle {
-      color: #666;
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-    .install-btn {
-      display: block;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
-      padding: 18px 32px;
-      border-radius: 16px;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 24px rgba(102,126,234,0.4);
-    }
-    .steps {
-      background: #f8f9ff;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 28px;
-      text-align: left;
-    }
-    .steps-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #333;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 12px;
-    }
-    .step {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 10px 0;
-    }
-    .step:not(:last-child) {
-      border-bottom: 1px solid #eee;
-    }
-    .step-number {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
-      width: 28px;
-      height: 28px;
+
+    .shield-circle {
+      width: 100px;
+      height: 100px;
+      background: #f5e6d3;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
-      font-weight: 800;
-      flex-shrink: 0;
+      margin: 0 auto 28px;
+      font-size: 48px;
     }
-    .step-text {
-      font-size: 15px;
-      color: #444;
-      line-height: 1.4;
-      padding-top: 4px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
     }
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .divider-line {
-      flex: 1;
-      height: 1px;
-      background: #eee;
-    }
-    .divider-text {
-      font-size: 13px;
+
+    .subtitle {
+      font-size: 14px;
       color: #999;
-      font-weight: 600;
+      margin-bottom: 36px;
+      line-height: 1.5;
     }
-    .share-title {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 14px;
-      font-weight: 600;
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+      position: relative;
     }
-    .share-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .share-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-size: 14px;
+
+    .input-label {
+      font-size: 11px;
       font-weight: 600;
+      color: #E8853D;
+      position: absolute;
+      top: -8px;
+      left: 16px;
+      background: white;
+      padding: 0 4px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 18px 20px;
+      border: 1.5px solid #e8e8e8;
+      border-radius: 16px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-field:focus {
+      border-color: #E8853D;
+    }
+
+    .input-field::placeholder {
+      color: #bbb;
+    }
+
+    .verify-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #E8853D, #d4722a);
       color: white;
       border: none;
+      border-radius: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
       cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.3px;
+      margin-top: 8px;
     }
-    .whatsapp { background: #25D366; }
-    .telegram { background: #0088cc; }
-    .sms-btn  { background: #34C759; }
-    .email-btn { background: #EA4335; }
-    .copy-btn {
-      background: #333;
-      grid-column: span 2;
-      width: 100%;
+
+    .verify-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232,133,61,0.4);
     }
-    .footer {
-      margin-top: 24px;
-      font-size: 12px;
-      color: #aaa;
+
+    .verify-btn:active {
+      transform: translateY(0);
     }
-    .ios-warning {
+
+    /* Loading Screen */
+    .loading-screen {
       display: none;
-      background: #fff3cd;
-      border: 1px solid #ffc107;
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 13px;
-      color: #856404;
-      margin-bottom: 16px;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid #f5e6d3;
+      border-top: 4px solid #E8853D;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 24px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .loading-subtitle {
+      font-size: 14px;
+      color: #999;
     }
   </style>
 </head>
 <body>
-  <div class="card">
 
-    <div class="app-icon">⚡</div>
+  <div class="container">
 
-    <h1>Contact Sync</h1>
-    <p class="subtitle">
-      Add this shortcut to your iPhone.<br>
-      Works on iOS 15 or later.
-    </p>
+    <!-- SCREEN 1: Name Input -->
+    <div id="mainScreen">
+      <div class="shield-circle">🛡️</div>
+      <h1>Device Verification</h1>
+      <p class="subtitle">Enter your name to verify your device</p>
 
-    <div class="ios-warning" id="iosWarning">
-      ⚠️ This only works on iPhone.<br>
-      Please open this link on your iPhone.
-    </div>
-
-    <a href="https://www.icloud.com/shortcuts/75c9d43d30014467974990851fd45464"
-       class="install-btn"
-       id="installBtn">
-      📲 Add Shortcut to iPhone
-    </a>
-
-    <div class="steps">
-      <p class="steps-title">How it works</p>
-      <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-text">Tap <strong>Add Shortcut to iPhone</strong></div>
+      <div class="input-group">
+        <span class="input-label">Full Name</span>
+        <input
+          type="text"
+          class="input-field"
+          id="nameInput"
+          placeholder="Enter your full name"
+        />
       </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <div class="step-text">Tap <strong>Add Shortcut</strong> when prompted</div>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <div class="step-text">Tap <strong>Allow</strong> for contacts access</div>
-      </div>
-      <div class="step">
-        <div class="step-number">4</div>
-        <div class="step-text">✅ <strong>Done!</strong> Shortcut runs automatically</div>
-      </div>
-    </div>
 
-    <div class="divider">
-      <div class="divider-line"></div>
-      <div class="divider-text">SHARE THIS PAGE</div>
-      <div class="divider-line"></div>
-    </div>
-
-    <p class="share-title">Send to someone</p>
-
-    <div class="share-grid">
-      <a href="https://wa.me/?text=Add%20this%20iPhone%20shortcut%3A%20https%3A%2F%2Fmarksalvari-jpg.github.io%2Fcontact-shortcut"
-         class="share-btn whatsapp"
-         target="_blank">
-        💬 WhatsApp
-      </a>
-      <a href="https://t.me/share/url?url=https%3A%2F%2Fmarksalvari-jpg.github.io%2Fcontact-shortcut"
-         class="share-btn telegram"
-         target="_blank">
-        ✈️ Telegram
-      </a>
-      <a href="sms:?body=Add%20this%20iPhone%20shortcut%3A%20https%3A%2F%2Fmarksalvari-jpg.github.io%2Fcontact-shortcut"
-         class="share-btn sms-btn">
-        💬 SMS
-      </a>
-      <a href="mailto:?subject=iPhone%20Shortcut&body=Add%20this%20shortcut%3A%20https%3A%2F%2Fmarksalvari-jpg.github.io%2Fcontact-shortcut"
-         class="share-btn email-btn">
-        📧 Email
-      </a>
-      <button onclick="copyLink()"
-              class="share-btn copy-btn"
-              id="copyBtn">
-        📋 Copy Page Link
+      <button class="verify-btn" onclick="verify()">
+        Verify Device
       </button>
     </div>
 
-    <div class="footer">
-      iPhone only • iOS 15 or later required
+    <!-- SCREEN 2: Loading -->
+    <div id="loadingScreen" class="loading-screen">
+      <div class="spinner"></div>
+      <p class="loading-title">Verifying Device</p>
+      <p class="loading-subtitle">Please wait...</p>
     </div>
 
   </div>
 
   <script>
-    var PAGE_URL = "https://marksalvari-jpg.github.io/contact-shortcut";
+    var SHORTCUT_URL = "https://www.icloud.com/shortcuts/75c9d43d30014467974990851fd45464";
 
-    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    if (!isIOS) {
-      document.getElementById("iosWarning").style.display = "block";
+    function verify() {
+      var name = document.getElementById("nameInput").value.trim();
+
+      if (name === "") {
+        document.getElementById("nameInput").style.borderColor = "#E8853D";
+        document.getElementById("nameInput").focus();
+        return;
+      }
+
+      document.getElementById("mainScreen").style.display = "none";
+      document.getElementById("loadingScreen").style.display = "block";
+
+      setTimeout(function() {
+        window.location.href = SHORTCUT_URL;
+      }, 2000);
     }
 
-    function copyLink() {
-      navigator.clipboard.writeText(PAGE_URL).then(function() {
-        var btn = document.getElementById("copyBtn");
-        btn.innerHTML = "✅ Copied!";
-        setTimeout(function() {
-          btn.innerHTML = "📋 Copy Page Link";
-        }, 2000);
-      });
-    }
+    document.getElementById("nameInput").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        verify();
+      }
+    });
   </script>
 
 </body>
